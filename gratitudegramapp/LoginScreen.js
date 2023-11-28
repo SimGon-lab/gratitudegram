@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button } from 'react-native';
+import styles from "/styles";
 
 const LoginScreen = ({ navigation }) => {
   const [username, setUsername] = useState('');
@@ -9,11 +10,12 @@ const LoginScreen = ({ navigation }) => {
     // Implement authentication logic here
     // For simplicity, just navigate to a home screen on successful login
     // navigation.navigate('Home');
-    console.log(username)
+    console.log(username);
+  
   };
 
   return (
-    <View>
+    <View style ={styles.loginBackground}>
       <Text>Login</Text>
       <TextInput
         placeholder="Username"
