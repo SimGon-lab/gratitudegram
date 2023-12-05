@@ -1,11 +1,20 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { ScrollView } from 'react-native';
+import { View, Text,  TouchableOpacity, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import {Button} from 'react-native';
+import {EmojiBank} from './EmojiBank';
+import LoginScreen from './LoginScreen';
+
 
 const WordBank = () => {
   const categories = [
+    
     { title: 'To You', words: ['Tenacious', 'Dependable', 'Punctual'] },
     { title: 'To Me', words: ['Honest', 'Temperate', 'Loyal', 'Encouraging', 'Hardworking', 'Flexible', 'Self-controlled', 'Thorough', 'Generous', 'Wise', 'Mindful', 'A leader'] },
-    { title: 'To Others', words: ['Eloquent', 'Perceptive', 'Patient', 'Funny', 'Great listener', 'Resourceful', 'Focused', 'Imaginative', 'Loving', 'Empathetic', 'Assertive', 'Professional', 'Independent', 'Ambitious', 'Caring', 'Fun', 'Fair', 'Knowledgeable', 'Courageous', 'Curious', 'Positive', 'Open-minded', 'Warm', 'Optimistic', 'Creative', 'Mentally strong', 'Unselfish', 'Faithful', 'Understanding', 'Cooperative'] },
+    
+   { title: 'To Others', words: ['Eloquent', 'Perceptive', 'Patient', 'Funny', 'Great listener', 'Resourceful', 'Focused', 'Imaginative', 'Loving', 'Empathetic', 'Assertive', 'Professional', 'Independent', 'Ambitious', 'Caring', 'Fun', 'Fair', 'Knowledgeable', 'Courageous', 'Curious', 'Positive', 'Open-minded', 'Warm', 'Optimistic', 'Creative', 'Mentally strong', 'Unselfish', 'Faithful', 'Understanding', 'Cooperative'] },
+
   ];
 
   const [selectedWords, setSelectedWords] = useState([]);
@@ -19,12 +28,18 @@ const WordBank = () => {
       } else {
         // Notify the user that they can only choose 3 words
         alert('You can only choose 3 words.');
+
+
+
+       const navigation = useNavigation();
+        navigation.navigate('EmojiBank');
       }
+     
     }
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       {categories.map((category, index) => (
         <View key={index} style={styles.categoryBox}>
           <Text style={styles.categoryTitle}>{category.title}</Text>
@@ -49,7 +64,8 @@ const WordBank = () => {
           ))}
         </View>
       </View>
-    </View>
+      <Button title="Go to Emoji Bank" onPress={EmojiBank} />
+    </ScrollView>
   );
 };
 

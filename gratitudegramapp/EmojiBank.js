@@ -1,5 +1,6 @@
 EmojiBank.js
 import React, { useState } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 
 //import './EmojiBank.css';
@@ -9,6 +10,21 @@ function EmojiBank() {
     const onOptionChange = (event) => {
         setEmoji(event.target.value);
     }
+
+    //const [emoji, setEmoji] = useState([]);
+
+    const emojiToggle = (emoji) => {
+      if (setEmoji.includes(emoji)) {
+        setEmoji(setEmoji.filter((setEmoji) => setEmoji !== emoji));
+      } else {
+        if (setEmoji.length < 1) {
+          setEmoji([...setEmoji, emoji]);
+        } else {
+          // Notify the user that they can only choose 3 words
+          alert('You can only choose 1 emoji for your GratitudeGram.');
+        }
+      }
+    };
 
 return (
     <div className='Emojis'>
@@ -146,10 +162,73 @@ return (
 
 
         <p> Selected Emoji is {emoji}</p>
+
+    <View style={styles.container}>
+      {categories.map((category, index) => (
+        <View key={index} style={styles.categoryBox}>
+          <Text style={styles.categoryTitle}>{category.title}</Text>
+          <View>
+            {category.emoji.map((emoji, idx) => (
+              <TouchableOpacity
+                key={idx}
+                onPress={() => handleemojiToggle(emoji)}
+                style={[styles.word, { backgroundColor: setEmoji.includes(emoji) ? 'pink' : 'white' }]}
+              >
+                <Text>{emoji}</Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+        </View>
+      ))}
+      <View style={styles.setEmoji}>
+        <Text style={styles.categoryTitle}>Selected Emojis:</Text>
+        <View>
+          {setEmoji.map((emoji, idx) => (
+            <Text key={idx} style={styles.setEmoji}>{emoji}</Text>
+          ))}
+        </View>
+      </View>
+    </View>
+  );
+  )
+
         </div>
        ) 
-
 }
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      padding: 16,
+      backgroundColor: '#FFD580', // Light orange color
+    },
+    emojiBox: {
+      marginBottom: 16,
+      padding: 16,
+      backgroundColor: 'orange', // Orange color for emoji boxes
+      borderRadius: 8,
+    },
+    emojiTitle: {
+      fontSize: 20,
+      fontWeight: 'bold',
+    },
+    emoji: {
+      padding: 8,
+      marginVertical: 4,
+      borderWidth: 1,
+      borderColor: '#ccc',
+      borderRadius: 8,
+    },
+    selectedEmojisBox: {
+      marginTop: 16,
+      padding: 16,
+      backgroundColor: 'orange', // Orange color for selected emojis box
+      borderRadius: 8,
+    },
+    selectedEmoji: {
+      fontSize: 12,
+    },
+  });
+  
 export default EmojiBank;
 
 
