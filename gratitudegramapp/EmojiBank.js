@@ -18,7 +18,7 @@ function EmojiBank() {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Text style={styles.emojiTitle}>Emoji Bank</Text>
       <Text style={styles.emojiTitle}>Select An Emoji </Text>
 
@@ -32,7 +32,7 @@ function EmojiBank() {
         </TouchableOpacity>
       ))}
       <Text>Selected Emoji is {selectedEmoji}</Text>
-    </View>
+    </ScrollView>
   );
 }
 
