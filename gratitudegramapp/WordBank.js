@@ -3,11 +3,8 @@ import { ScrollView } from 'react-native';
 import { View, Text,  TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import {Button} from 'react-native';
-import {EmojiBank} from './EmojiBank';
-import LoginScreen from './LoginScreen';
-
-
 const WordBank = () => {
+  const navigation = useNavigation();
   const categories = [
     
     { title: 'To You', words: ['Tenacious', 'Dependable', 'Punctual'] },
@@ -16,6 +13,10 @@ const WordBank = () => {
    { title: 'To Others', words: ['Eloquent', 'Perceptive', 'Patient', 'Funny', 'Great listener', 'Resourceful', 'Focused', 'Imaginative', 'Loving', 'Empathetic', 'Assertive', 'Professional', 'Independent', 'Ambitious', 'Caring', 'Fun', 'Fair', 'Knowledgeable', 'Courageous', 'Curious', 'Positive', 'Open-minded', 'Warm', 'Optimistic', 'Creative', 'Mentally strong', 'Unselfish', 'Faithful', 'Understanding', 'Cooperative'] },
 
   ];
+
+  const toEmojiBank = () => {
+    navigation.navigate('EmojiBank');
+   }
 
   const [selectedWords, setSelectedWords] = useState([]);
 
@@ -28,11 +29,6 @@ const WordBank = () => {
       } else {
         // Notify the user that they can only choose 3 words
         alert('You can only choose 3 words.');
-
-
-
-       const navigation = useNavigation();
-        navigation.navigate('EmojiBank');
       }
      
     }
@@ -64,7 +60,7 @@ const WordBank = () => {
           ))}
         </View>
       </View>
-      <Button title="Go to Emoji Bank" onPress={EmojiBank} />
+      <Button title="Go to Emoji Bank" onPress={toEmojiBank} />
     </ScrollView>
   );
 };
