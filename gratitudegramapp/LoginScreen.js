@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, ScrollView } from 'react-native';
 import styles from "./styles";
-
 const LoginScreen = ({ navigation }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
   const handleLogin = () => {
     // Implement authentication logic here
     //navigate to a home screen on successful login
@@ -13,7 +11,6 @@ const LoginScreen = ({ navigation }) => {
     console.log(username);
     navigation.navigate('ForgotPasswordPage');
   };
-
   return (
     <ScrollView style={styles.loginBackground}>
       <View style={styles.loginContainer}>
@@ -35,5 +32,4 @@ const LoginScreen = ({ navigation }) => {
     </ScrollView>
   );
 };
-
 export default LoginScreen;
