@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import {ScrollView} from 'react-native';
 
 function EmojiBank() {
   const [selectedEmoji, setSelectedEmoji] = useState('');

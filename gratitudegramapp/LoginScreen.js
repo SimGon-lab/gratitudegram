@@ -1,20 +1,18 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button } from 'react-native';
+import { View, Text, TextInput, Button, ScrollView } from 'react-native';
 import styles from "./styles";
-
 const LoginScreen = ({ navigation }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
   const handleLogin = () => {
     // Implement authentication logic here
-    // For simplicity, just navigate to a home screen on successful login
+    //navigate to a home screen on successful login
     navigation.navigate('AccountPage');
     console.log(username);
+    // navigation.navigate('ForgotPasswordPage');
   };
-
   return (
-    <View style={styles.loginBackground}>
+    <ScrollView style={styles.loginBackground}>
       <View style={styles.loginContainer}>
         <Text>Sign in</Text>
         <TextInput
@@ -30,8 +28,7 @@ const LoginScreen = ({ navigation }) => {
         />
         <Button title="Sign In" onPress={handleLogin} />
       </View>
-    </View>
+    </ScrollView>
   );
 };
-
 export default LoginScreen;
