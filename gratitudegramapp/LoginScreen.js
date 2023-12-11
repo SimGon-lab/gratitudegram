@@ -8,8 +8,6 @@ const LoginScreen = ({ navigation }) => {
     // Implement authentication logic here
     //navigate to a home screen on successful login
     navigation.navigate('AccountPage');
-    console.log(username);
-    // navigation.navigate('ForgotPasswordPage');
   };
   return (
     <ScrollView style={styles.loginBackground}>
@@ -27,6 +25,7 @@ const LoginScreen = ({ navigation }) => {
           onChangeText={(text) => setPassword(text)}
         />
         <Button title="Sign In" onPress={handleLogin} />
+        <Button title="Forgot Password?" onPress={handleLogin} />
       </View>
     </ScrollView>
   );
